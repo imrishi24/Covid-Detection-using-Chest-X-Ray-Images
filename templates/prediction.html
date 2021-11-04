@@ -1,0 +1,28 @@
+{% extends "layout.html"%}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='stylesForPrediction.css') }}" />
+<div class="bg-light container-fluid  border p-5 mt-5">
+	<h1 id="mainTitle" class="text-center">
+		<span class="spanRed h1">Covid</span> Detection Using X-rays
+	</h1>
+	<p class="py-3 fs-4">
+    The model used here is a Transfer Learning Model which has been trained on hundreds of <span class="font-monospace spanRed fs-4">COVID</span>
+    and <span class="spanRed font-monospace fs-4">NON-COVID</span> images to predict COVID-19,Although this model has good accuracy,
+    Please do keep in mind, That this cannot replace a Medical Practitioner's advise and if you do face 
+    COVID-19 symptoms make sure to conatact your doctor.
+    <p class="fw-bold fw-italic font-monospace text-muted text-decoration-underline fs-5">The model accepts X-ray Images in <span class="spanRed fs-5">JPEG</span> and
+    <span class="spanRed fs-5">PNG</span> format.  
+	</p>
+</div>
+  <h2 class="text-center m-2">Please <span class="spanRed h1">upload</span> an X-ray Image</h2>
+<div class="container h-100 d-flex justify-content-center">
+	<form action="/get-prediction" method="POST" enctype="multipart/form-data">
+		<input class="form-control mt-4 p-2" type="file" name="image">
+		<input class="btn btn-dark btn-sm p-2 m-2 text-center" type="submit" value="Predict Image">
+	</form>
+</div>
+<div class="container h-100 d-flex justify-content-center">
+  {% if newPred %}
+	  <h1 class="text-center ">Prediction is <span class="spanRed h1">{{newPred}}</span></p>
+	{% endif %}
+{% endblock %}

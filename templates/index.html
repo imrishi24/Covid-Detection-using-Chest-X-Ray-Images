@@ -1,0 +1,164 @@
+{% extends "layout.html"%}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='stylesForIndex.css') }}" />
+<div class=" bg-dark container-fluid border border-dark">
+	<nav class="navbar navbar-light navbar-expand-sm">
+		<a class="navbar-brand text-light" href="#">
+			<span class="hidden h2">C<i class="fas fa-virus text-danger h2"></i>VID-19</span>
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggleMobileMenu"
+			aria-controls="toggleMobileMenu" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="toggleMobileMenu">
+			<ul class="navbar-nav ms-auto text-center">
+				<li class="hoverEff">
+					<a class="nav-link fs-4 p-4 text-light" href="#covidSymptoms">Symptoms</a>
+				</li>
+				<li class="hoverEff">
+					<a class="nav-link fs-4 p-4 text-light" href="#covidPrevention">Prevention</a>
+				</li>
+				<li class="hoverEff">
+					<a class="nav-link fs-4 p-4 text-light " href="#covidPrediction">Prediction</a>
+				</li>
+			</ul>
+
+
+		</div>
+	</nav>
+</div>
+<div class="bg-light infoCovid container-fluid  border p-5">
+	<h1 id="h1InfoTyped"></h1>
+	<p id="pInfoTyped"></p>
+</div>
+<div id="covidSymptoms" class="infoSymptoms container-fluid  border p-5">
+	<h1 id="h1Symptoms">What are the <span class="h1 spanRed">Symptoms?</span></h1>
+	<p>COVID-19 affects different people in different ways. Most infected people will develop mild to moderate illness and
+		recover without hospitalization.
+	</p>
+	<div class="card-group">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title"><span class="spanRed h4">Most common</span> symptoms</h4>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">Fever</li>
+					<li class="list-group-item">Dry cough</li>
+					<li class="list-group-item">Tiredness</li>
+				</ul>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title"><span class="spanRed h4">Less common</span> symptoms</h4>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">Aches and Pains</li>
+					<li class="list-group-item">Sore throat</li>
+					<li class="list-group-item">Headache</li>
+					<li class="list-group-item">Loss of taste and smell</li>
+					<li class="list-group-item">Conjunctivitis</li>
+				</ul>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title"><span class="spanRed h4">Serious</span> Symptoms</h4>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">Difficulty in breathing or shortness of breath</li>
+					<li class="list-group-item">Chest pain or pressure</li>
+					<li class="list-group-item">Loss of speech or movement</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<h2 id="ifSymptoms" class="mt-5">What to do if you observe the mentioned <span class="spanRed h2">symptoms</span>?
+	</h2>
+	<p>Seek immediate medical attention if you have serious symptoms. Always call before visiting your doctor or health
+		facility.People with mild symptoms who are otherwise healthy should manage their symptoms at home.
+	</p>
+</div>
+<div id="covidPrevention" class="infoPrevention bg-light container-fluid  border p-3">
+	<div class="row">
+		<div class="col">
+			<img class=" mx-auto d-block img-fluid" src="../static/liquid-soap.png" alt="Handwash">
+		</div>
+		<div class="col">
+			<h1 class="mt-5">How to prevent catching<span class="spanRed h1"> Coronavirus</span>
+				?</h1>
+			<ol class="list-group list-group-numbered">
+				<li class="list-group-item">Clean your hands often. Use soap and water, or an alcohol-based hand rub.</li>
+				<li class="list-group-item">Maintain a safe distance from anyone who is coughing or sneezing</li>
+				<li class="list-group-item">Wear a mask when physical distancing is not possible.
+				<li class="list-group-item">Don’t touch your eyes, nose or mouth.</li>
+				<li class="list-group-item">Stay home if you feel unwell.</li>
+			</ol>
+		</div>
+	</div>
+</div>
+<div id="covidPrediction" class="infoPrediction bg-light container-fluid  border p-3">
+	<div class="jumbotron">
+		<h1 class="display-4">Covid-19 <span class="spanRed display-4">prediction</span> using Deep Learning Models</h1>
+		<p class="lead">A Machine Learning Model has been trained to predict COVID-19,It expects an X-ray from the user as
+			input.</p>
+		<a class="btn btn-dark btn-lg" href="{{url_for('getPrediction')}}" role="button">Predict Now</a>
+	</div>
+</div>
+<div class="bg-light container-fluid  border p-5">
+	<h1 class="mb-5"><span class="spanRed h1">COVID-19</span> statistics for India(Updated Daily through MoHFW)</h1>
+	<div class="row">
+		<div class="col-sm">
+			<div class="card text-white bg-dark mb-3">
+				<div class="card-body">
+					<h3 class="card-title"><span class="spanRed h3">Active Cases</span></h3>
+					<p class="card-text">{{jsonData["activeCases"]}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm">
+			<div class="card text-white bg-dark mb-3">
+				<div class="card-body">
+					<h3 class="card-title"><span class="spanRed h3">New Active Cases</span></h3>
+					<p class="card-text">{{jsonData["activeCasesNew"]}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm">
+			<div class="card text-white bg-dark mb-3">
+				<div class="card-body">
+					<h3 class="card-title"><span class="spanRed h3">Recovered</span></h3>
+					<p class="card-text">{{jsonData["recovered"]}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm">
+			<div class="card text-white bg-dark mb-3">
+				<div class="card-body">
+					<h3 class="card-title"><span class="spanRed h3">Deaths</span></h3>
+					<p class="card-text">{{jsonData["deaths"]}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm">
+			<div class="card text-white bg-dark mb-3">
+				<div class="card-body">
+					<h3 class="card-title"><span class="spanRed h3">Total Cases</span></h3>
+					<p class="card-text">{{jsonData["totalCases"]}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm">
+			<div class="card text-white bg-dark mb-3">
+				<div class="card-body">
+					<h3 class="card-title"><span class="spanRed h3">Last Updated</span></h3>
+					<p class="card-text">{{(jsonData["lastUpdatedAtApify"][:10])}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type=text/javascript src="{{
+  url_for('static', filename='index.js') }}"></script>
+{% endblock %}

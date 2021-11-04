@@ -1,0 +1,44 @@
+:root {
+  --red: #ff4f5b;
+}
+* {
+  font-size: 16px;
+  line-height: 2;
+}
+*::selection {
+  background: var(--red);
+}
+html::-webkit-scrollbar {
+  width: 0.5rem;
+}
+html::-webkit-scrollbar-track {
+  background: #000;
+}
+html::-webkit-scrollbar-thumb {
+  background: var(--red);
+}
+.navbar-nav li a:hover {
+  color: var(--red);
+}
+.oddContainer {
+  background-color: #c8c8c8;
+}
+.evenContainer {
+  background-color: #d3d3d3;
+}
+.container-fluid p {
+  font-size: 1.5rem;
+}
+.infoSymptoms h1 span {
+  color: var(--red);
+}
+span.spanRed {
+  color: var(--red);
+}
+
+.hoverEff a:hover {
+  color: var(--red) !important;
+}
+#covidPrediction .jumbotron a:hover {
+  color: var(--red) !important;
+}
